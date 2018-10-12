@@ -1,10 +1,7 @@
 $(document).ready(function () {
 
-    var newsURL = "https://cors-anywhere.herokuapp.com/https://cryptopanic.com/api/posts/?auth_token=01f6876937ec50fcfa209d5c8044ed3e46744b89&public=true&structure=array";
-    var bullish = "&filter=bullish";
-    var bearish = "&filter=bearish";
-
-    var config = {
+   src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"
+    var conf = {
 
         apiKey: "AIzaSyBuayaA5_zDiUpv9HEle0iityLJl5CAnrM",
         authDomain: "cryptomonstar.firebaseapp.com",
@@ -14,7 +11,7 @@ $(document).ready(function () {
         messagingSenderId: "600045610445"
 
     };
-    firebase.initializeApp(config);
+    firebase.initializeApp(conf);
     database = firebase.database();
 
     var queryURL ="https://api.coinmarketcap.com/v2";
@@ -116,27 +113,14 @@ $(document).ready(function () {
 
     
        
-        var link=$("<button>").text("News");
-        link.attr("id",childSnapshot.val().symbol);
-        link.addClass("none");
-        link.addClass("row btn btn-primary");
-       
-        var link2=$("<button>").text("Bullish");
-        link2.attr("id",childSnapshot.val().symbol);
-        link2.addClass("bullish");
-        link2.addClass("row btn btn-warning");
-
-        var link3=$("<button>").text("Bearish");        
-        link3.attr("id",childSnapshot.val().symbol);
-        link3.addClass("bearish");
-        link3.addClass("row btn btn-success");
+        
 
         card.addClass("col-lg-3 col-md-6 col-sm-12 charlie");
         
-        card.append(title).append(subtitle).append(rank).append(hour).append(day).append(week).append(link).append(link2).append(link3);
+        card.append(title).append(subtitle).append(rank).append(hour).append(day).append(week);
         card.append("<br>");
 
-        $("#cards").append(card);}
+        $("#crypto-stats-3").append(card);}
        
     
 
@@ -176,41 +160,6 @@ $(document).ready(function () {
       }).then(updatePage);
       });    
 
-function updatePage(cryptoData) {
-     
-      $("#crypto-stats-3").empty();
-      
-      for(var i=1;i<=10;i++){
-
-        var card=$("<div>");
-        card.addClass("card");
-        var cardBody=$("<div>");
-        cardBody.addClass("card-body");
-        var title=$("<a href="+cryptoData.results[i].url+">").text(i+". "+cryptoData.results[i].title);
-        title.addClass("card-title");
-        var subtitle=$("<h6>").text("Retrieved from: "+cryptoData.results[i].domain);
-        subtitle.addClass("card-subtitle mb-2 text-muted");
-
-        var votes=$("<p>").text("Votes");
-        votes.addClass("card-text");
-        votes.append("<br>");
-        votes.append("Liked: "+cryptoData.results[i].votes.liked+" // Disliked: "+cryptoData.results[i].votes.disliked+" // Important: "+cryptoData.results[i].votes.important+" // Lol: "+cryptoData.results[i].votes.lol+" // Toxic: "+cryptoData.results[i].votes.toxic);
-      
-        card.addClass("col-lg-12 col-md-12 col-sm-12");
-
-
-        card.append(title).append(subtitle).append(votes);
-
-        $("#crypto-stats-3").append(card);
-        var br=$("<br>");
-        $("#crypto-stats-3").append(br);
-
-      
-      
-      }
-
-
-    }  
 
     $(document).keypress(function(e) {
 
