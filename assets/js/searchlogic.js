@@ -31,33 +31,33 @@ $(document).ready(function () {
             console.log(searchTerm);
             }
             function pageResults (cryptoData) {
-                console.log("dentro de search");
+                console.log(cryptoData);
                 
+                $("#article-section").empty();
+      
                 for(var i=1;i<=10;i++){
+                    var card=$("<div>");
+                    card.addClass("card");
+                    var cardBody=$("<div>");
+                    cardBody.addClass("card-body");
+                    var title=$("<a href="+cryptoData[i].url+">").text(i+". "+cryptoData[i].title);
+                    title.addClass("card-title");
+                    var subtitle=$("<h6>").text("Description "+cryptoData[i].description);
+                    subtitle.addClass("card-subtitle mb-2 text-muted");
 
-                  var card=$("<div>");
-                  card.addClass("card");
-                  var cardBody=$("<div>");
-                  cardBody.addClass("card-body");
-                  var title=$("<a href="+cryptoData.results[i].url+">").text(i+". "+cryptoData.results[i].title);
-                  title.addClass("card-title");
-                  var subtitle=$("<h6>").text("Retrieved from: "+cryptoData.results[i].domain);
-                  subtitle.addClass("card-subtitle mb-2 text-muted");
-          
-                  var votes=$("<p>").text("Votes");
-                  votes.addClass("card-text");
-                  votes.append("<br>");
-                  votes.append("Liked: "+cryptoData.results[i].votes.liked+" // Disliked: "+cryptoData.results[i].votes.disliked+" // Important: "+cryptoData.results[i].votes.important+" // Lol: "+cryptoData.results[i].votes.lol+" // Toxic: "+cryptoData.results[i].votes.toxic);
-                
-                  card.addClass("col-lg-12 col-md-12 col-sm-12");
-          
-          
-                  card.append(title).append(subtitle).append(votes);
-          
-                  $("#article-section").append(card);
-                  var br=$("<br>");
-                  $("#article-section").append(br);
-          
+                    
+                    var published=$("<p>").text("Details");
+                    published.addClass("card-text");
+                    published.append("<br>");
+                    published.append("Published: "+cryptoData[i].publishedAt+" // Domain: "+cryptoData[i].sourceDomain+" // Category: "+cryptoData[i].primaryCategory+"");
+                    
+                    card.addClass("col-lg-12 col-md-12 col-sm-12");
+                    card.append(title).append(subtitle).append(published);
+
+                    $("#article-section").append(card);
+                    var br=$("<br>");
+                    $("#article-section").append(br);
+                    
                 
                 
                 }};
@@ -80,7 +80,7 @@ $(document).ready(function () {
                     method: 'GET'
                     
                   }).then(pageResults);
-                  console.log(url);
+                  console.log();
                   }
 
                 else {
