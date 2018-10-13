@@ -1,0 +1,1 @@
+echo file_get_contents('https://cryptocontrol.io/api/v1/public/');
