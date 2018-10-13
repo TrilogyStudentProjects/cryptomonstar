@@ -1,17 +1,18 @@
 $(document).ready(function () {
+    src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"
+    var newsURL = "https://cors-anywhere.herokuapp.com/https://cryptopanic.com/api/posts/?auth_token=01f6876937ec50fcfa209d5c8044ed3e46744b89&public=true&structure=array";
+    var bullish = "&filter=bullish";
+    var bearish = "&filter=bearish";
 
-   src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"
-    var conf = {
-
+    var config = {
         apiKey: "AIzaSyBuayaA5_zDiUpv9HEle0iityLJl5CAnrM",
         authDomain: "cryptomonstar.firebaseapp.com",
         databaseURL: "https://cryptomonstar.firebaseio.com",
         projectId: "cryptomonstar",
         storageBucket: "cryptomonstar.appspot.com",
         messagingSenderId: "600045610445"
-
     };
-    firebase.initializeApp(conf);
+    firebase.initializeApp(config);
     database = firebase.database();
 
     var queryURL ="https://api.coinmarketcap.com/v2";
@@ -33,7 +34,7 @@ $(document).ready(function () {
             var cryptoName=results[i].name;
             var symbol=results[i].symbol;
             var rank=results[i].rank;
-            var price=math.round(results[i].quotes.USD.price);
+            var price=results[i].quotes.USD.price;
             var percentageHour=results[i].quotes.USD.percent_change_1h;
             var percentageDay=results[i].quotes.USD.percent_change_24h;
             var percentageWeek=results[i].quotes.USD.percent_change_7d;
@@ -48,76 +49,60 @@ $(document).ready(function () {
                 percentageHour: percentageHour,
                 percentageDay:percentageDay,
                 percentageWeek:percentageWeek,
-                momentAdded: firebase.database.ServerValue.TIMESTAMP
-                //the moment added will be used to comapre when the information was uploaded and to decide if we need to call the API again or not
-            });
-            
-
-        }
-
-
+                momentAdded: firebase.database.ServerValue.TIMESTAMP //the moment added will be used to comapre when the information was uploaded and to decide if we need to call the API again or not
+            });   
+       }
       });
       
       database.ref().on("child_added", function (childSnapshot) {
         
-      if(childSnapshot.val().rank<=12){
+      if(childSnapshot.val().rank<=30){
+
         var card=$("<div>");
-        card.addClass("card");
+        card.addClass("col-xl-4 col-6");
+        var cardTop=$("<div>");
+        cardTop.addClass("card crypto-card-3 pull-up");
+        var cardContent=$("<div>");
+        cardContent.addClass("card-content");
         var cardBody=$("<div>");
-        cardBody.addClass("card-body");
-
-        var title=$("<h5>").text(childSnapshot.val().cryptoName);
-        title.addClass("card-title");
-        var subtitle=$("<h6>").text(childSnapshot.val().symbol);
-        subtitle.addClass("card-subtitle mb-2 text-muted");
-
-        var rank=$("<p>").text("Rank: "+childSnapshot.val().rank);
-        rank.addClass("card-text");
-        rank.append("<br>");
-        rank.append("Price (USD): $"+(childSnapshot.val().price).toString().substring(0,(childSnapshot.val().price).toString().indexOf('.')+3));
-        rank.append("<br>");
-
-        var hour=$("<p>");
-        if (childSnapshot.val().percentageHour<=0){
-            hour.append("(1h): "+childSnapshot.val().percentageHour+"%");
-            hour.append("<br>");
-            hour.addClass("rojo");
-        }
-        else{
-            hour.append("(1h): "+childSnapshot.val().percentageHour+"%");
-            hour.append("<br>");
-            hour.addClass("verde");
-        }
+        cardBody.addClass("card-body pb-0");
+        var cardRow =$("<div>");
+        cardRow.addClass("row");
+        var cardcol =$("<div>");
+        cardcol.addClass("col-2");
+        var cardcol2 =$("<div>");
+        cardcol2.addClass("col-5 pl-2");
+        var cardcol5 =$("<div>");
+        cardcol5.addClass("col-5 text-right");
+        var colIcon=$("<h1>");
+        var incolIcon=$("<i>");
+        var classIcon ="cc " + childSnapshot.val().symbol+" font-large-2";
+        incolIcon.addClass(classIcon);
+        var title=$("<h6>").text(childSnapshot.val().cryptoName);
+        title.addClass("text-muted");
+        var coin=$("<h4>").text(childSnapshot.val().symbol);
+        var price=$("<h4>").text("$"+(childSnapshot.val().price).toString().substring(0,(childSnapshot.val().price).toString().indexOf('.')+3));  
         var day=$("<p>");
         if (childSnapshot.val().percentageDay<=0){
-            day.append("(24h): "+childSnapshot.val().percentageDay+"%");
+            day.append(childSnapshot.val().percentageDay+"%");
             day.append("<br>");
-            day.addClass("rojo");
+            day.addClass("danger");
+            day.addClass("la la-arrow-down");
         }
         else{
-            day.append("(24h): "+childSnapshot.val().percentageDay+"%");
+            day.append(childSnapshot.val().percentageDay+"%");
             day.append("<br>");
-            day.addClass("verde");
+            day.addClass("success darken-4");
+            day.addClass("la la-arrow-up");
         }
-        var week=$("<p>");
-        if (childSnapshot.val().percentageWeek<=0){
-            week.append("(Week): "+childSnapshot.val().percentageWeek+"%");
-            week.append("<br>");
-            week.addClass("rojo");
-        }
-        else{
-            week.append("(Week): "+childSnapshot.val().percentageWeek+"%");
-            week.append("<br>");
-            week.addClass("verde");
-        }
-
-    
-       
-        
-
-        card.addClass("col-lg-3 col-md-6 col-sm-12 charlie");
-        
-        card.append(title).append(subtitle).append(rank).append(hour).append(day).append(week);
+        cardcol5.append(price).append(day);
+        cardcol2.append(coin).append(title);
+        cardcol.append(colIcon).append(incolIcon);
+        cardRow.append(cardcol).append(cardcol2).append(cardcol5);
+        cardBody.append(cardRow);
+        cardContent.append(cardBody);
+        cardTop.append(cardContent);
+        card.append(cardTop);
         card.append("<br>");
 
         $("#crypto-stats-3").append(card);}
@@ -160,6 +145,41 @@ $(document).ready(function () {
       }).then(updatePage);
       });    
 
+function updatePage(cryptoData) {
+     
+      $("#article-section").empty();
+      
+      for(var i=1;i<=10;i++){
+
+        var card=$("<div>");
+        card.addClass("card");
+        var cardBody=$("<div>");
+        cardBody.addClass("card-body");
+        var title=$("<a href="+cryptoData.results[i].url+">").text(i+". "+cryptoData.results[i].title);
+        title.addClass("card-title");
+        var subtitle=$("<h6>").text("Retrieved from: "+cryptoData.results[i].domain);
+        subtitle.addClass("card-subtitle mb-2 text-muted");
+
+        var votes=$("<p>").text("Votes");
+        votes.addClass("card-text");
+        votes.append("<br>");
+        votes.append("Liked: "+cryptoData.results[i].votes.liked+" // Disliked: "+cryptoData.results[i].votes.disliked+" // Important: "+cryptoData.results[i].votes.important+" // Lol: "+cryptoData.results[i].votes.lol+" // Toxic: "+cryptoData.results[i].votes.toxic);
+      
+        card.addClass("col-lg-12 col-md-12 col-sm-12");
+
+
+        card.append(title).append(subtitle).append(votes);
+
+        $("#article-section").append(card);
+        var br=$("<br>");
+        $("#article-section").append(br);
+
+      
+      
+      }
+
+
+    }  
 
     $(document).keypress(function(e) {
 
