@@ -20,16 +20,7 @@ $(document).ready(function () {
 
       var coin="bitcoin";
 
-      url: 'get_data.php',
-       headers: {
-           'Access-Control-Allow-Origin': '*',...},
-       method: 'GET',
-       dataType: 'json',
-       data: '',
-       success: function(data){
-         console.log('succes: '+ data);
-         console.log(data.results);
-         $('#search-view').prepend(JSON.stringify(data.results));
+   
     
     //news Section
     $("#news").on("click", function (event){
