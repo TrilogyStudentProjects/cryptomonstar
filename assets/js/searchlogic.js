@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var controlUrl ="https://cors-anywhere.herokuapp.com/https://cryptocontrol.io/api/v1/public/";
+    var controlUrl ="https://cryptocontrol.io/api/v1/public/";
     var ckey= "?key=10bb5802424ae0f76d10089201fa0ca6";
 
       var cparamtweets ="tweets/coin/";
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
             console.log("entra cuando hago enter");
             
-            var makeCard=false;
+         
 
             if($('#searchVal').val()!==""){
             var searchTerm=($('#searchVal').val()).charAt(0).toUpperCase() + (($('#searchVal').val()).slice(1)).toLowerCase();
@@ -50,50 +50,51 @@ $(document).ready(function () {
 
             database.ref().once('value', function(snapshot) {
                 if (snapshot.hasChild(searchTerm)) {
-               
-                 database.ref().child(searchTerm).once('value',function(snapshot){
-
-                    if(snapshot.val().rank>12){ var card=$("<div>");
-                    card.addClass("card");
-                    var cardBody=$("<div>");
-                    cardBody.addClass("card-body");
-                    var title=$("<a href="+cryptoData[i].url+">").text(i+". "+cryptoData[i].title);
-                    title.addClass("card-title");
-                    var subtitle=$("<h6>").text("Description: "+cryptoData[i].description);
-                    subtitle.addClass("card-subtitle mb-2 text-muted");
-            
-                    
-                    var published=$("<p>").text("Details");
-                    published.addClass("card-text");
-                    published.append("<br>");
-                    published.append("Updated: "+cryptoData[i].updatedAt+" // Subreddit: "+cryptoData[i].subreddit+" // Upvotes: "+cryptoData[i].upvotes+"");
-                    
-                    card.addClass("col-lg-12 col-md-12 col-sm-12");
-                    card.append(title).append(subtitle).append(published);
-            
-                    $("#article-section").append(card);
-                    var br=$("<br>");
-                    $("#article-section").append(br);}
-
-                    else{
-
-                        alert("the information about this cryptocurrency is already being displayed");
-                    }
-
-                 });
-                  
+                       
+                    queryUrl = controlUrl+cparamnewsen+searchTerm+ckey;
+                  $.ajax({
+                    url: queryUrl,
+                    method: 'GET',
+                  }).then(updatePages);
                 }
 
                 else{
 
                     alert("the cryptocurrency does not exist");
                 }
+
                });
+            }
 
-        }
-
+        });
+        function updatePages(cryptoData) {
+            console.log(cryptoData);
+              $("#article-section").empty();
+              
+              for(var i=1;i<=10;i++){
+                var card=$("<div>");
+                card.addClass("card");
+                var cardBody=$("<div>");
+                cardBody.addClass("card-body");
+                var title=$("<a href="+cryptoData[i].url+">").text(i+". "+cryptoData[i].title);
+                title.addClass("card-title");
+                var subtitle=$("<h6>").text("Description "+cryptoData[i].description);
+                subtitle.addClass("card-subtitle mb-2 text-muted");
+        
+                
+                var published=$("<p>").text("Details");
+                published.addClass("card-text");
+                published.append("<br>");
+                published.append("Published: "+cryptoData[i].publishedAt+" // Domain: "+cryptoData[i].sourceDomain+" // Category: "+cryptoData[i].primaryCategory+"");
+                
+                card.addClass("col-lg-12 col-md-12 col-sm-12");
+                card.append(title).append(subtitle).append(published);
+        
+                $("#article-section").append(card);
+                var br=$("<br>");
+                $("#article-section").append(br);
+              }
+            }  
 
     });
 
-
-});
