@@ -15,13 +15,14 @@
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
   <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-content-menu.css">
   <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
   <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/cryptocoins/cryptocoins.css">
-  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="app-assets/css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" type="text/css" href="assets/css/cppg-style.css" />
+  <link rel="stylesheet" type="text/css" href="assets/vendor/chosen-js/chosen.css" />
+
 </head>
 <body class="vertical-layout vertical-content-menu 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
@@ -82,7 +83,6 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                
               </ul>
             </li>
-            
           </ul>
           <ul class="nav navbar-nav float-right">
             
@@ -102,6 +102,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
         <div class="main-menu-content">
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="active"><a class="menu-item" href="index.html" data-i18n="nav.dash.crypto">Home</a>
+
               <li class=" nav-item"><a href="index.html"><i class="fab fa-bitcoin"></i><span class="menu-title" data-i18n="nav.c3_charts.main">Market Overview</span></a>
               
               </li>
@@ -118,13 +119,68 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
           </ul>
         </div>
       </div>
-        <div class="content-body">
-          <div id="crypto-stats-3" class="row">
-        
-          
-          </div>
+      <div class="content-body">
+        <div id="game" class="row">
+          <div class="container">
+            <div class="jumbotron">
+                <div class="col-sm-12 ">
+                    <h1 class="display-4">Are you a Cryptomonstar?</h1>
+                    <p class="lead">Try your luck and see if you can predict a cryptocurrency price.</p>
+                </div>
 
-       </div>
+                <div class="col-sm-12">
+                        <div id="cppg-container">
+                                <div id="cppg-loader">
+                                  <div class="cppg-bounce1"></div>
+                                  <div class="cppg-bounce2"></div>
+                                  <div class="cppg-bounce3"></div>
+                                </div>
+                                <div id="cppg-game">
+                                  <div id="cppg-question">
+                                    <span>Will </span>
+                                    <select id="cppg-asset">
+                                      <option value="BTC" selected>Bitcoin</option>
+                                      <option value="BCH">Bitcoin Cash</option>
+                                      <option value="ETH">Ether</option>
+                                      <option value="LTC">Litecoin</option>
+                                      <option value="DASH">DigitalCash</option>
+                                      <option value="XMR">Monero</option>
+                                    </select>
+                                    <span> rise or fall in </span>
+                                    <select id="cppg-duration">
+                                      <option value="15">15 seconds</option>
+                                      <option value="30">30 seconds</option>
+                                      <option value="45">45 seconds</option>
+                                      <option value="60">1 minute</option>
+                                      <option value="120">2 minutes</option>
+                                      <option value="300">5 minutes</option>
+                                    </select>
+                                    <span>?</span>
+                                  </div>
+                                  <div id="cppg-prediction-container">
+                                    <span id="cppg-prediction" data-text="I think <b>{0}</b> price will be strictly {1} than <b>{2}</b> USD in {3} seconds."></span>
+                                    <span id="cppg-positive-result" class="cppg-result" data-text="Price is <b>{0}</b>. Congrats, you won!"></span>
+                                    <span id="cppg-negative-result" class="cppg-result" data-text="Price is <b>{0}</b>. Oops, you lost..."></span>
+                                  </div>
+                                  <div>
+                                    Wins / losses: <span id="cppg-wins"></span> / <span id="cppg-losses"></span>
+                                  </div>
+                                  <div id="cppg-chart" data-line-color="#003fa5" data-fill-color="#e8f0ff" data-line-width="2" data-spot-color="#003fa5" data-min-spot-color="" data-max-spot-color="" data-spot-radius="5" data-highlight-line-color="#003fa5"></div>
+                                  <div>
+                                    <span>USD</span> <span id="cppg-quote"></span>
+                                  </div>
+                                  <div id="cppg-buttons-container">
+                                    <button class="cppg-action cppg-action-up" data-direction="1" data-text="higher">RISE</button>
+                                    <button class="cppg-action cppg-action-down" data-direction="-1" data-text="lower">FALL</button>
+                                  </div>
+                                </div>
+                          </div>
+                  </div>
+            </div>
+        </div> 
+        </div>
+
+      </div>
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
@@ -137,22 +193,24 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   </footer>
   <!-- BEGIN VENDOR JS-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   
 
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
   <script src="app-assets/vendors/js/ui/headroom.min.js" type="text/javascript"></script>
-  <!-- END PAGE VENDOR JS-->
-  <!-- BEGIN MODERN JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  <script src="assets/vendor/socket/socket.io.js"></script>
+  <script src="assets/vendor/chosen-js/chosen.jquery.min.js"></script>
+  <script src="assets/vendor/jquery.sparkline/jquery.sparkline.min.js"></script>
+  <script src="assets/vendor/js-cookie/js.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+  <script src="assets/js/cppg-app.min.js"></script>
+  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
   <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
   <script src="app-assets/js/core/app.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
   
-  <!-- END MODERN JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-  <script src="app-assets/js/scripts/pages/logic.js" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
+  
 </body>
 </html>

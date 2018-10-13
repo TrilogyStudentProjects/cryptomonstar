@@ -1,3 +1,11 @@
 .monstar{
     width:300px;
 }
+.jumbotron{
+    padding:10px;
+    text-align: center;
+}
+.charting{
+    padding:10px;
+    float: left;
+};
