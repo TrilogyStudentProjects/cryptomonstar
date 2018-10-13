@@ -74,12 +74,12 @@ $(document).ready(function () {
                 if (snapshot.hasChild(searchTerm)) {
                   
                    
-                    var lowerCaseTerm=searchTerm.toLowerCase();
-                    console.log(lowerCaseTerm)
+                    //var lowerCaseTerm=searchTerm.toLowerCase();
+                    console.log(searchTerm)
                     console.log("3")
                   $.ajax({
                     //aca hay que pasar el searchTerm A lowercase
-                    url: controUrl+cparamnwsen+lowerCaseTerm+cky,
+                    url: controUrl+cparamnwsen+searchTerm+cky,
                     method: 'GET',
                     
                   }).then(pageResults);
