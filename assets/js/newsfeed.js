@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-   
+  var controlUrl ="https://cors-anywhere.herokuapp.com/https://cryptocontrol.io/api/v1/public/";
     var ckey= "?key=10bb5802424ae0f76d10089201fa0ca6";
 
       var cparamtweets ="tweets/coin/";
@@ -25,19 +25,13 @@ $(document).ready(function () {
     //news Section
     $("#news").on("click", function (event){
           event.preventDefault();      
-          queryUrl = cparamnewsen+coin+ckey;
+          queryUrl = controlUrl+cparamnewsen+coin+ckey;
         $.ajax({
-          url: 'get_data.php'+queryUrl,
-       headers: {
-           'Access-Control-Allow-Origin': '*',
-           'Content-Type':'application/json'
-          },
+          url: queryUrl,
           method: 'GET',
-          dataType: 'json',
-          data: '',
         }).then(updatePage);
       });
-    
+      /*
     //news category
     $("#newscat").on("click", function (event){
         event.preventDefault();      
@@ -49,7 +43,7 @@ $(document).ready(function () {
     });
 
     //feed 
-    /*
+  
     $("#feed").on("click", function (event){
           event.preventDefault();      
           queryUrl = controlUrl+cparamfeed+coin+ckey;
@@ -81,7 +75,7 @@ $(document).ready(function () {
         method: "GET"
     }).then(updatePageTwitter);
     });
-
+    /*
     //Coin details
     $("#details").on("click", function (event){
             event.preventDefault();      
@@ -92,7 +86,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(updatePage);
       });
-
+      */
 
 function createCard(cryptoDetails){
     $("details-section").empty();
