@@ -77,7 +77,7 @@ $(document).ready(function () {
                     
                   $.ajax({
                     url: controUrl+cparamnwsen+lowerCaseTerm+cky,
-                    method: 'GET',
+                    method: 'GET'
                     
                   }).then(pageResults);
                   console.log(url);

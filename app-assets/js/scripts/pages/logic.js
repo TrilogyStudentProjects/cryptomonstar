@@ -81,6 +81,7 @@ $(document).ready(function () {
         var title=$("<h6>").text(childSnapshot.val().cryptoName);
         title.addClass("text-muted");
         var coin=$("<h4>").text(childSnapshot.val().symbol);
+        var rank=$("<h4>").text("Rank: "+childSnapshot.val().rank);
         var price=$("<h4>").text("$"+(childSnapshot.val().price).toString().substring(0,(childSnapshot.val().price).toString().indexOf('.')+3));  
         var day=$("<p>");
         if (childSnapshot.val().percentageDay<=0){
@@ -96,7 +97,7 @@ $(document).ready(function () {
             day.addClass("la la-arrow-up");
         }
         cardcol5.append(price).append(day);
-        cardcol2.append(coin).append(title);
+        cardcol2.append(rank).append(coin).append(title);
         colIcon.append(incolIcon);
         cardcol.append(colIcon);
         cardRow.append(cardcol).append(cardcol2).append(cardcol5);
@@ -105,7 +106,7 @@ $(document).ready(function () {
         cardTop.append(cardContent);
         card.append(cardTop);
         card.append("<br>");
-
+        card.attr("id", title);
         $("#crypto-stats-3").append(card);}
        
     
