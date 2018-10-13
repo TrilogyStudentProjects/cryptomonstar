@@ -27,56 +27,59 @@ $(document).ready(function () {
             if($('#searchVal').val()!==""){
             var searchTerm=($('#searchVal').val()).charAt(0).toUpperCase() + (($('#searchVal').val()).slice(1)).toLowerCase();
             $('#searchVal').val("");
+            var searchParam=($('#searchVal').val()).toLowerCase();
             console.log(searchTerm);
             }
+            function pageResults (cryptoData) {
+                console.log("2");
+                for(var i=1;i<=10;i++){
+
+                  var card=$("<div>");
+                  card.addClass("card");
+                  var cardBody=$("<div>");
+                  cardBody.addClass("card-body");
+                  var title=$("<a href="+cryptoData.results[i].url+">").text(i+". "+cryptoData.results[i].title);
+                  title.addClass("card-title");
+                  var subtitle=$("<h6>").text("Retrieved from: "+cryptoData.results[i].domain);
+                  subtitle.addClass("card-subtitle mb-2 text-muted");
+          
+                  var votes=$("<p>").text("Votes");
+                  votes.addClass("card-text");
+                  votes.append("<br>");
+                  votes.append("Liked: "+cryptoData.results[i].votes.liked+" // Disliked: "+cryptoData.results[i].votes.disliked+" // Important: "+cryptoData.results[i].votes.important+" // Lol: "+cryptoData.results[i].votes.lol+" // Toxic: "+cryptoData.results[i].votes.toxic);
+                
+                  card.addClass("col-lg-12 col-md-12 col-sm-12");
+          
+          
+                  card.append(title).append(subtitle).append(votes);
+          
+                  $("#article-section").append(card);
+                  var br=$("<br>");
+                  $("#article-section").append(br);
+          
+                
+                
+                }};
 
             database.ref().once('value', function(snapshot) {
                 if (snapshot.hasChild(searchTerm)) {
-                       
-                    queryUrl = controUrl+cparamnwsen+searchTerm+cky;
-                    console.log(queryUrl);
+                    
                   $.ajax({
-                    url: queryUrl,
+                    //aca hay que pasar el searchTerm A lowercase
+                    url: controUrl+cparamnwsen+searchTerm+cky,
                     method: 'GET',
                     
-                  }).then(cryptoData);
-                  console.log(cryptoData);
-                  for(var i=1;i<=10;i++){
-
-                    var card=$("<div>");
-                    card.addClass("card");
-                    var cardBody=$("<div>");
-                    cardBody.addClass("card-body");
-                    var title=$("<a href="+cryptoData.results[i].url+">").text(i+". "+cryptoData.results[i].title);
-                    title.addClass("card-title");
-                    var subtitle=$("<h6>").text("Retrieved from: "+cryptoData.results[i].domain);
-                    subtitle.addClass("card-subtitle mb-2 text-muted");
-            
-                    var votes=$("<p>").text("Votes");
-                    votes.addClass("card-text");
-                    votes.append("<br>");
-                    votes.append("Liked: "+cryptoData.results[i].votes.liked+" // Disliked: "+cryptoData.results[i].votes.disliked+" // Important: "+cryptoData.results[i].votes.important+" // Lol: "+cryptoData.results[i].votes.lol+" // Toxic: "+cryptoData.results[i].votes.toxic);
-                  
-                    card.addClass("col-lg-12 col-md-12 col-sm-12");
-            
-            
-                    card.append(title).append(subtitle).append(votes);
-            
-                    $("#article-section").append(card);
-                    var br=$("<br>");
-                    $("#article-section").append(br);
-            
-                  
+                  }).then(pageResults);
                   
                   }
-                }
 
                 else {
 
                     alert("the cryptocurrency does not exist");
+                    // aca llamar a Modal.
                 }
 
-               });
+                });
             }
 
         });
