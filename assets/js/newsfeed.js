@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var controlUrl ="get_data.php";
+   
     var ckey= "?key=10bb5802424ae0f76d10089201fa0ca6";
 
       var cparamtweets ="tweets/coin/";
@@ -20,34 +20,30 @@ $(document).ready(function () {
 
       var coin="bitcoin";
 
-      $(function () {
-        $('a[href="#search"]').on('click', function(event) {
-            event.preventDefault();
-            $('#search').addClass('open');
-            $('#search > form > input[type="search"]').focus();
-        });
-        
-        $('#search, #search button.close').on('click keyup', function(event) {
-            if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-                $(this).removeClass('open');
-            }
-        });
-        
-        
-        //Do not include! This prevents the form from submitting for DEMO purposes only!
-        $('form').submit(function(event) {
-            event.preventDefault();
-            return false;
-        })
-    });
+      url: 'get_data.php',
+       headers: {
+           'Access-Control-Allow-Origin': '*',...},
+       method: 'GET',
+       dataType: 'json',
+       data: '',
+       success: function(data){
+         console.log('succes: '+ data);
+         console.log(data.results);
+         $('#search-view').prepend(JSON.stringify(data.results));
     
     //news Section
     $("#news").on("click", function (event){
           event.preventDefault();      
-          queryUrl = controlUrl+cparamnewsen+coin+ckey;
+          queryUrl = cparamnewsen+coin+ckey;
         $.ajax({
-          url:queryUrl,
-          method: "GET"
+          url: 'get_data.php'+queryUrl,
+       headers: {
+           'Access-Control-Allow-Origin': '*',
+           'Content-Type':'application/json'
+          },
+          method: 'GET',
+          dataType: 'json',
+          data: '',
         }).then(updatePage);
       });
     
