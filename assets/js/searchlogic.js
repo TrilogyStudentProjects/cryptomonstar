@@ -20,10 +20,7 @@ $(document).ready(function () {
             $(".modal").hide();
           }); 
 
-        $(document).keypress(function(e) {
-
-        //if the pressed key is entered, start looking for the new currency, but first validate
-        if(e.which == 13) {
+        $(document).on("click",function(){
 
             console.log("entra cuando hago enter");
             
@@ -34,7 +31,8 @@ $(document).ready(function () {
             console.log(searchTerm);
             }
             function pageResults (cryptoData) {
-                console.log("2");
+                console.log("dentro de search");
+                
                 for(var i=1;i<=10;i++){
 
                   var card=$("<div>");
@@ -65,8 +63,8 @@ $(document).ready(function () {
                 }};
 
                 $(document).on("click", ".close",function(){
-        $(".modal").hide();
-      }); 
+                 $(".modal").hide();
+                }); 
                   
                 
 
@@ -74,16 +72,15 @@ $(document).ready(function () {
                 if (snapshot.hasChild(searchTerm)) {
                   
                    
-                    //var lowerCaseTerm=searchTerm.toLowerCase();
-                    console.log(searchTerm)
-                    console.log("3")
+                   var lowerCaseTerm=searchTerm.toLowerCase();
+                    console.log(lowerCaseTerm)
+                    
                   $.ajax({
-                    //aca hay que pasar el searchTerm A lowercase
-                    url: controUrl+cparamnwsen+searchTerm+cky,
+                    url: controUrl+cparamnwsen+lowerCaseTerm+cky,
                     method: 'GET',
                     
                   }).then(pageResults);
-                  
+                  console.log(url);
                   }
 
                 else {
@@ -92,10 +89,9 @@ $(document).ready(function () {
                 }
 
                 });
-            }
+            })
 
         });
         
 
-    });
 
