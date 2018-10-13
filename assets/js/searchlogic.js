@@ -16,6 +16,9 @@ $(document).ready(function () {
         };
         firebase.initializeApp(config);
         database = firebase.database();
+        $(document).on("click", ".close",function(){
+            $(".modal").hide();
+          }); 
 
         $(document).keypress(function(e) {
 
@@ -61,12 +64,22 @@ $(document).ready(function () {
                 
                 }};
 
+                $(document).on("click", ".close",function(){
+        $(".modal").hide();
+      }); 
+                  
+                
+
             database.ref().once('value', function(snapshot) {
                 if (snapshot.hasChild(searchTerm)) {
-                    
+                  
+                   
+                    var lowerCaseTerm=searchTerm.toLowerCase();
+                    console.log(lowerCaseTerm)
+                    console.log("3")
                   $.ajax({
                     //aca hay que pasar el searchTerm A lowercase
-                    url: controUrl+cparamnwsen+searchTerm+cky,
+                    url: controUrl+cparamnwsen+lowerCaseTerm+cky,
                     method: 'GET',
                     
                   }).then(pageResults);
@@ -74,9 +87,8 @@ $(document).ready(function () {
                   }
 
                 else {
-
-                    alert("the cryptocurrency does not exist");
-                    // aca llamar a Modal.
+                    $("#non_existent").show();
+                    
                 }
 
                 });
