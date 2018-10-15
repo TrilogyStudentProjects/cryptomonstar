@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="Cryptmonstar is a simple cryptocurrency information app - check your crypto data before you invest!.">
-  <meta name="keywords" content="cryptomonstar, crypto, bitcoin, ethereum, crypto dashboard, bitcoin dashboard">
-  <meta name="author" content="Crypto Monstar">
-  <title>CryptoMonstar Dashboard
-  </title>
-  <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
-  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-content-menu.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/cryptocoins/cryptocoins.css">
-  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-  <link rel="stylesheet" type="text/css" href="app-assets/css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Cryptmonstar is a simple cryptocurrency information app - check your crypto data before you invest!.">
+    <meta name="keywords" content="cryptomonstar, crypto, bitcoin, ethereum, crypto dashboard, bitcoin dashboard">
+    <meta name="author" content="Crypto Monstar">
+    <title>CryptoMonstar News
+    </title>
+    <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-content-menu.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/cryptocoins/cryptocoins.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="app-assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  </head>
 <body class="vertical-layout vertical-content-menu 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   <!-- fixed-top-->
@@ -101,7 +101,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
       <div class="main-menu menu-static menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="active"><a class="menu-item" href="index.html" data-i18n="nav.dash.crypto">Home</a>
+            <li class="active"><a class="menu-item" href="index.html" data-i18n="nav.dash.crypto">Home</a> </li>
               <li class=" nav-item"><a href="index.html"><i class="fab fa-bitcoin"></i><span class="menu-title" data-i18n="nav.c3_charts.main">Market Overview</span></a>
               
               </li>
@@ -113,7 +113,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
           
               <li class=" nav-item"><a href="bitcoin.html"><i class="fas fa-chart-line"></i><span class="menu-title" data-i18n="nav.rickshaw_charts.main">Chart Analysis</span></a>
               </li>
-            </li>
+           
            
           </ul>
         </div>
@@ -125,7 +125,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                          <div class="row">
                             <div class="col">
                                 <div class="input-group col-md-12">
-                                    <input type="text"id="searchVal" class="  search-query form-control" placeholder="Search" />
+                                    <input type="text" id="searchVal" class="  search-query form-control" placeholder="Search" />
                                     <span class="input-group-btn">
                                         <button class="btn btn-danger" type="button">
                                             <span class="fas fa-search-dollar"></span>
@@ -201,22 +201,22 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   </footer>
   <!-- BEGIN VENDOR JS-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/vendors.min.js" ></script>
   
 
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
-  <script src="app-assets/vendors/js/ui/headroom.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/ui/headroom.min.js" ></script>
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN MODERN JS-->
-  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
-  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+  <script src="app-assets/js/core/app-menu.js" ></script>
+  <script src="app-assets/js/core/app.js" ></script>
+  <script src="app-assets/js/scripts/customizer.js" ></script>
   
   <!-- END MODERN JS-->
   <!-- BEGIN PAGE LEVEL JS-->
-  <script src="assets/js/newsfeed.js" type="text/javascript"></script>
-  <script src="assets/js/searchlogic.js" type="text/javascript"></script>
+  <script src="assets/js/newsfeed.js" ></script>
+  <script src="assets/js/searchlogic.js" ></script>
   <!-- END PAGE LEVEL JS-->
 </body>
 </html>
