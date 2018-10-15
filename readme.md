@@ -7,7 +7,7 @@ Cryptomonstar is a dynamic web application that presents the most relevant data 
 
 * [Cryptopanic](https://cryptopanic.com/)
 * [Cryptomarketcap](https://coinmarketcap.com/)
-* [Cariptofacil](https://www.criptofacil.lat/)
+* [Criptofacil](https://www.criptofacil.lat/)
 
 ## Authors
 
