@@ -3,6 +3,8 @@
 
 Cryptomonstar is a dynamic web application that presents the most relevant data about the main cryptocurrencies in the world.
 
+Visit the deployed website at: www.cryptomonstar.com
+
 ## APIs Used
 
 * [Cryptopanic](https://cryptopanic.com/)
