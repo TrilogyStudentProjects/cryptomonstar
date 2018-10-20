@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="Cryptmonstar is a simple cryptocurrency information app - check your crypto data before you invest!.">
-  <meta name="keywords" content="cryptomonstar, crypto, bitcoin, ethereum, crypto dashboard, bitcoin dashboard">
-  <meta name="author" content="Crypto Monstar">
-  <title>CryptoMonstar Dashboard
-  </title>
-  <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
-  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-content-menu.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/cryptocoins/cryptocoins.css">
-  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-  <!-- END Page Level CSS-->
-  <!-- BEGIN Custom CSS-->
-  <link rel="stylesheet" type="text/css" href="app-assets/css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-  
-  <!-- END Custom CSS-->
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Cryptmonstar is a simple cryptocurrency information app - check your crypto data before you invest!.">
+    <meta name="keywords" content="cryptomonstar, crypto, bitcoin, ethereum, crypto dashboard, bitcoin dashboard">
+    <meta name="author" content="Crypto Monstar">
+    <title>CryptoMonstar Graphing Tool
+    </title>
+    <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-content-menu.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/cryptocoins/cryptocoins.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="app-assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  </head>
 <body class="vertical-layout vertical-content-menu 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   <!-- fixed-top-->
@@ -37,7 +33,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item">
             <a class="navbar-brand" href="index.html">
-              <img class="monstar" alt="Crypto Monstar" src="app-assets/images/logo/logo.jpeg">
+              <img class="monstar" alt="Crypto Monstar" src="app-assets/images/logo/logomonstar.jpeg">
             
             </a>
           </li>
@@ -105,7 +101,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
       <div class="main-menu menu-static menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="active"><a class="menu-item" href="index.html" data-i18n="nav.dash.crypto">Home</a>
+            <li class="active"><a class="menu-item" href="index.html" data-i18n="nav.dash.crypto">Home</a></li>
             
             <li class=" nav-item"><a href="index.html"><i class="fab fa-bitcoin"></i><span class="menu-title" data-i18n="nav.c3_charts.main">Market Overview</span></a>
               
@@ -118,7 +114,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
           
             <li class=" nav-item"><a href="bitcoin.html"><i class="fas fa-chart-line"></i><span class="menu-title" data-i18n="nav.rickshaw_charts.main">Chart Analysis</span></a>
             </li>
-          </li>
+          
           </ul>
         </div>
       </div>
@@ -147,21 +143,21 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   <!-- BEGIN VENDOR JS-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/vendors.min.js" ></script>
   
 
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
-  <script src="app-assets/vendors/js/ui/headroom.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/ui/headroom.min.js" ></script>
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN MODERN JS-->
-  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
-  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+  <script src="app-assets/js/core/app-menu.js" ></script>
+  <script src="app-assets/js/core/app.js" ></script>
+  <script src="app-assets/js/scripts/customizer.js" ></script>
   
   <!-- END MODERN JS-->
   <!-- BEGIN PAGE LEVEL JS-->
-  <script src="app-assets/js/scripts/pages/logic.js" type="text/javascript"></script>
+  <script src="app-assets/js/scripts/pages/logic.js" ></script>
   <!-- END PAGE LEVEL JS-->
 </body>
 </html>
